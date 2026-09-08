@@ -1,0 +1,1058 @@
+app:
+  description: 对于大学生实习进行推荐和规划，基于学生的回答情况进行汇总，并且输出对应结果
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: AI实习规划师
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.21@5873fe73395aeb49ba26035059eb4e0ec5af01bb66d0545b031f8917b12e8c29
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1781804202191--1781804209893-target
+      selected: false
+      source: '1781804202191'
+      sourceHandle: source
+      target: '1781804209893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1781804209893-source-1781838046190-target
+      selected: false
+      source: '1781804209893'
+      sourceHandle: source
+      target: '1781838046190'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1781838046190-source-1781839256180-target
+      selected: false
+      source: '1781838046190'
+      sourceHandle: source
+      target: '1781839256180'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1781839276797-source-1781839293117-target
+      selected: false
+      source: '1781839276797'
+      sourceHandle: source
+      target: '1781839293117'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1781839256180-source-1781840115589-target
+      selected: false
+      source: '1781839256180'
+      sourceHandle: source
+      target: '1781840115589'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1781840115589-true-1781839276797-target
+      selected: false
+      source: '1781840115589'
+      sourceHandle: 'true'
+      target: '1781839276797'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1781840115589-false-1781840137150-target
+      selected: false
+      source: '1781840115589'
+      sourceHandle: 'false'
+      target: '1781840137150'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1781840137150-true-1781853474761-target
+      source: '1781840137150'
+      sourceHandle: 'true'
+      target: '1781853474761'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1781853474761-source-1781853581328-target
+      source: '1781853474761'
+      sourceHandle: source
+      target: '1781853581328'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1781853480528-source-1781853593680-target
+      source: '1781853480528'
+      sourceHandle: source
+      target: '1781853593680'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1781840137150-false-1781853480528-target
+      source: '1781840137150'
+      sourceHandle: 'false'
+      target: '1781853480528'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: major
+        type: start
+        variables:
+        - hint: ''
+          label: major
+          max_length: 50
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: major
+        - default: ''
+          hint: ''
+          label: grade
+          max_length: 50
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: grade
+        - default: ''
+          hint: ''
+          label: target_job
+          max_length: 50
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: target_job
+      height: 160
+      id: '1781804202191'
+      position:
+        x: 62.74285714285713
+        y: 16.45714285714287
+      positionAbsolute:
+        x: 62.74285714285713
+        y: 16.45714285714287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_config:
+          jinja2_variables: []
+        prompt_template:
+        - edition_type: basic
+          id: c186eb27-3213-443e-b287-1e7d66099261
+          role: system
+          text: "你是一名资深招聘顾问。\n\n目标岗位：\n\n专业：{{#1781804202191.major#}}\n年级：{{#1781804202191.grade#}}\n\
+            岗位：{{#1781804202191.target_job#}}\n\n请分析：\n\n1. 该岗位需要哪些核心能力\n\n输出JSON：\n\
+            \n{\n  \"required_skills\":[]\n}"
+        reasoning_format: separated
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output_enabled: true
+        title: LLM 1
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1781804209893'
+      position:
+        x: 342
+        y: 48.66666666666668
+      positionAbsolute:
+        x: 342
+        y: 48.66666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 8ecec51a-49dd-4a9c-bf2f-ab95660edade
+          role: system
+          text: "你是一名职业规划顾问。\n\n用户信息：\n\n专业：{{#1781804202191.major#}}\n年级：{{#1781804202191.grade#}}\n\
+            \n请推测该学生可能拥有的能力。\n\n输出JSON：\n\n{\n  \"current_skills\":[]\n}"
+        reasoning_format: separated
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1781838046190'
+      position:
+        x: 609.9714285714286
+        y: 48.66666666666668
+      positionAbsolute:
+        x: 609.9714285714286
+        y: 48.66666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_config:
+          jinja2_variables: []
+        prompt_template:
+        - id: a793d1a5-4ef2-4f94-8d51-79e524d8ce9f
+          role: system
+          text: '你是一名职业能力评估专家。
+
+            请根据岗位要求与用户能力进行评分。
+
+            评分规则：
+
+            专业背景（0-20）
+
+            专业高度相关：16-20
+
+            专业部分相关：10-15
+
+            专业关联较弱：0-9
+
+            技术基础（0-20）
+
+            已掌握岗位核心技术：16-20
+
+            掌握部分技术：10-15
+
+            基础较弱：0-9
+
+            产品能力（0-25）
+
+            具备产品思维、需求分析、PRD经验：18-25
+
+            有部分认知：10-17
+
+            基本没有接触：0-9
+
+            项目经历（0-20）
+
+            有高相关项目：16-20
+
+            有一般项目：10-15
+
+            几乎没有项目：0-9
+
+            实习经历（0-15）
+
+            有高度相关实习：11-15
+
+            有部分相关经历：5-10
+
+            无相关经历：0-4
+
+            计算：
+
+            match_score =
+
+            major_score +
+
+            technical_score +
+
+            product_score +
+
+            project_score +
+
+            experience_score
+
+            输出内容必须符合Schema。
+
+            同时输出：
+
+            owned_skills
+
+            gap_skills
+
+            score_reason
+
+            不要输出Markdown。
+
+            不要输出解释性文字。
+
+            只输出结构化结果。'
+        reasoning_format: separated
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              experience_score:
+                description: 实习经历得分（0-15）
+                type: number
+              gap_skills:
+                description: 缺失能力
+                items:
+                  type: string
+                type: array
+              major_score:
+                description: 专业背景得分（0-20）
+                type: number
+              match_score:
+                description: 总匹配度（0-100）
+                type: number
+              owned_skills:
+                description: 已具备能力
+                items:
+                  type: string
+                type: array
+              product_score:
+                description: 产品能力得分（0-25）
+                type: number
+              project_score:
+                description: 项目经历得分（0-20）
+                type: number
+              score_reason:
+                description: 评分依据简述
+                type: string
+              technical_score:
+                description: 技术基础得分（0-20）
+                type: number
+            required:
+            - major_score
+            - technical_score
+            - product_score
+            - project_score
+            - experience_score
+            - match_score
+            - owned_skills
+            - gap_skills
+            - score_reason
+            type: object
+        structured_output_enabled: true
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1781839256180'
+      position:
+        x: 883.0857142857142
+        y: 48.66666666666668
+      positionAbsolute:
+        x: 883.0857142857142
+        y: 48.66666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+            thinking: true
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 16ac6bb8-7717-46e3-b458-f3e18a3aa0eb
+          role: system
+          text: '你是一名资深职业规划顾问。
+
+            用户信息：
+
+            专业：{{#1781804202191.major#}}
+
+            年级：{{#1781804202191.grade#}}
+
+            目标岗位：{{#1781804202191.target_job#}}
+
+            已具备能力：
+
+            {{#1781839256180.structured_output.owned_skills#}}
+
+            缺失能力：
+
+            {{#1781839256180.structured_output.gap_skills#}}
+
+            匹配度：
+
+            {{#1781839256180.structured_output.match_score#}}
+
+            该用户已达到较高匹配度（80分以上）。
+
+            请输出：
+
+            当前竞争力分析
+
+            简历优化建议
+
+            最值得展示的项目类型
+
+            推荐投递策略
+
+            面试准备重点
+
+            未来30天行动计划
+
+            要求：
+
+            建议必须结合专业和年级
+
+            不要输出学习路线
+
+            优先帮助用户获得面试机会
+
+            输出具体行动
+
+            学习资源不要固定推荐。
+
+
+            优先结合用户专业背景、
+
+            目标岗位、
+
+            已完成项目。
+
+
+            避免重复推荐同一资源。'
+        selected: false
+        structured_output_enabled: true
+        title: LLM 4
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1781839276797'
+      position:
+        x: 1488.4000000000003
+        y: 48.66666666666668
+      positionAbsolute:
+        x: 1488.4000000000003
+        y: 48.66666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1781839276797'
+          - text
+          value_type: string
+          variable: text1
+        selected: false
+        title: 输出
+        type: end
+      height: 87
+      id: '1781839293117'
+      position:
+        x: 1791.5275935752506
+        y: 51.16089048943194
+      positionAbsolute:
+        x: 1791.5275935752506
+        y: 51.16089048943194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: 59507c53-5715-4b8b-a002-bb333490a5dc
+            value: '80'
+            varType: number
+            variable_selector:
+            - '1781839256180'
+            - structured_output
+            - match_score
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 147
+      id: '1781840115589'
+      position:
+        x: 1178.8285714285714
+        y: 48.66666666666668
+      positionAbsolute:
+        x: 1178.8285714285714
+        y: 48.66666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: 3a1cace6-a14e-448b-89ca-65c620e3c78d
+            value: '60'
+            varType: number
+            variable_selector:
+            - '1781839256180'
+            - structured_output
+            - match_score
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 147
+      id: '1781840137150'
+      position:
+        x: 1178.8285714285714
+        y: 269.2243036390373
+      positionAbsolute:
+        x: 1178.8285714285714
+        y: 269.2243036390373
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 94fb87cf-c9c8-4f41-9ebf-a596777ab774
+          role: system
+          text: '你是一名资深职业规划顾问。
+
+            用户信息：
+
+            专业：{{#1781804202191.major#}}
+
+            年级：{{#1781804202191.grade#}}
+
+            目标岗位：{{#1781804202191.target_job#}}
+
+            已具备能力：
+
+            {{#1781839256180.structured_output.owned_skills#}}
+
+            缺失能力：
+
+            {{#1781839256180.structured_output.gap_skills#}}
+
+            匹配度：
+
+            {{#1781839256180.structured_output.match_score#}}
+
+            该用户处于中等匹配阶段（60-79分）。
+
+            请输出：
+
+            当前能力评价
+
+            与目标岗位的主要差距
+
+            最需要补齐的3项能力
+
+            推荐项目实践
+
+            推荐学习资源
+
+            未来60天提升路线
+
+            要求：
+
+            结合用户当前年级
+
+            推荐具体项目
+
+            推荐具体学习内容
+
+            目标是在2个月内达到可投递水平
+
+            学习资源不要固定推荐。
+
+
+            优先结合用户专业背景、
+
+            目标岗位、
+
+            已完成项目。
+
+
+            避免重复推荐同一资源。'
+        selected: false
+        title: LLM 5
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1781853474761'
+      position:
+        x: 1488.4000000000003
+        y: 214.54912545091247
+      positionAbsolute:
+        x: 1488.4000000000003
+        y: 214.54912545091247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 9d77e3da-fc75-4eb5-bc9d-c6fde91597e8
+          role: system
+          text: '你是一名资深职业规划顾问。
+
+            用户信息：
+
+            专业：{{#1781804202191.major#}}
+
+            年级：{{#1781804202191.grade#}}
+
+            目标岗位：{{#1781804202191.target_job#}}
+
+            已具备能力：
+
+            {{#1781839256180.structured_output.owned_skills#}}
+
+            缺失能力：
+
+            {{#1781839256180.structured_output.gap_skills#}}
+
+            匹配度：
+
+            {{#1781839256180.structured_output.match_score#}}
+
+            该用户当前匹配度较低（60分以下）。
+
+            请输出：
+
+            差距分析
+
+            必须优先学习的能力
+
+            推荐入门项目
+
+            推荐学习资源
+
+            未来3个月成长路线
+
+            是否建议继续选择该职业方向及原因
+
+            要求：
+
+            结合专业背景分析
+
+            推荐具体行动
+
+            推荐具体项目
+
+            给出明确成长路径
+
+            不要给空泛建议
+
+            学习资源不要固定推荐。
+
+
+            优先结合用户专业背景、
+
+            目标岗位、
+
+            已完成项目。
+
+
+            避免重复推荐同一资源。'
+        selected: false
+        title: LLM 6
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1781853480528'
+      position:
+        x: 1498.8466067595537
+        y: 397.2747977542651
+      positionAbsolute:
+        x: 1498.8466067595537
+        y: 397.2747977542651
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1781853474761'
+          - text
+          value_type: string
+          variable: text2
+        selected: false
+        title: 输出 2
+        type: end
+      height: 87
+      id: '1781853581328'
+      position:
+        x: 1791.5275935752506
+        y: 214.54912545091247
+      positionAbsolute:
+        x: 1791.5275935752506
+        y: 214.54912545091247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1781853480528'
+          - text
+          value_type: string
+          variable: text3
+        selected: false
+        title: 输出 3
+        type: end
+      height: 87
+      id: '1781853593680'
+      position:
+        x: 1798.4919980816194
+        y: 397.2747977542651
+      positionAbsolute:
+        x: 1798.4919980816194
+        y: 397.2747977542651
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"需要用户进行专业（major），年纪（grade），目标工作（target_job）进行填写","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788835781155'
+      position:
+        x: -224.16950172165522
+        y: 51.16089048943194
+      positionAbsolute:
+        x: -224.16950172165522
+        y: 51.16089048943194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"梳理目标岗位进行分析，输出岗位能力需求","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788835885994'
+      position:
+        x: 342
+        y: -65.38877949090295
+      positionAbsolute:
+        x: 342
+        y: -65.38877949090295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"根据学生专业进行分析学生到这个阶段应该有的能力，并输出能力技能","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788835938512'
+      position:
+        x: 605.7524972681256
+        y: -53.88877949090295
+      positionAbsolute:
+        x: 605.7524972681256
+        y: -53.88877949090295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"对于岗位需求和学生能力进行综合打分，输出综合评分","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788836026012'
+      position:
+        x: 878.2524972681256
+        y: -55.38877949090295
+      positionAbsolute:
+        x: 878.2524972681256
+        y: -55.38877949090295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"对于评分高低进行不同的回答及其建议","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788836089441'
+      position:
+        x: 1330.2169017744948
+        y: -65.38877949090295
+      positionAbsolute:
+        x: 1330.2169017744948
+        y: -65.38877949090295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    - data:
+        author: Jiaqing
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"对于上述内容进行输出","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1788836139680'
+      position:
+        x: 1784.6442958150715
+        y: -69.09594821303013
+      positionAbsolute:
+        x: 1784.6442958150715
+        y: -69.09594821303013
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+      zIndex: 0
+    viewport:
+      x: 258.67154942047046
+      y: 304.3901889624517
+      zoom: 0.659753955386447
+  rag_pipeline_variables: []
